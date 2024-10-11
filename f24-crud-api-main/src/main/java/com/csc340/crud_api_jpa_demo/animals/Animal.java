@@ -9,7 +9,7 @@ public class Animal {
     @Id
     @Column(nullable = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int animalId;
+    private Integer animal_id;
 
     @Column(nullable = false)
     private String name;
@@ -19,14 +19,14 @@ public class Animal {
     private String habitat;
 
     @Column(nullable = true)
-    private String scientificName;
+    private String scientific_name;
 
     private String description;
 
-    public Animal(int animalId, String name, String scientificName, String species, String habitat, String description) {
-        this.animalId = animalId;
+    public Animal(Integer animalId, String name, String scientificName, String species, String habitat, String description) {
+        this.animal_id = animalId;
         this.name = name;
-        this.scientificName = scientificName;
+        this.scientific_name = scientificName;
         this.species = species;
         this.habitat = habitat;
         this.description = description;
@@ -34,7 +34,7 @@ public class Animal {
 
     public Animal(String name, String scientificName, String species, String habitat, String description) {
         this.name = name;
-        this.scientificName = scientificName;
+        this.scientific_name = scientificName;
         this.species = species;
         this.habitat = habitat;
         this.description = description;
@@ -43,12 +43,12 @@ public class Animal {
     public Animal() {
     }
 
-    public int getAnimalId() {
-        return animalId;
+    public Integer getAnimalId() {
+        return animal_id;
     }
 
-    public void setAnimalId(int animalId) {
-        this.animalId = animalId;
+    public void setAnimalId(Integer animalId) {
+        this.animal_id = animalId;
     }
 
     public String getName() {
@@ -60,11 +60,11 @@ public class Animal {
     }
 
     public String getScientificName() {
-        return scientificName;
+        return scientific_name;
     }
 
     public void setScientificName(String scientificName) {
-        this.scientificName = scientificName;
+        this.scientific_name = scientificName;
     }
 
     public String getSpecies() {

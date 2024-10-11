@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * AnimalController.java.
- * Includes all REST API endpoint mappings for the Animal object.
+ * Includes all REST API endpoInteger mappings for the Animal object.
  */
 @RestController
 @RequestMapping("/animals")
@@ -29,29 +29,37 @@ public class AnimalController {
     }
 
     /**
+     * Get a list of Animals with the same string in their name
+     * http://localhost:8080/animals?string={name}
+     *
+     * @param string the search key.
+     * @return A list of Student objects matching the search key.
+     */
+
+    @GetMapping("/find")
+    public List<Animal> getAnimalsByString(@RequestParam(name = "string") String string) {
+        return service.getAnimalsByString(string);
+    }
+
+
+    @GetMapping("/species")
+    public List<Animal> getAnimalsBySpecies(@RequestParam(name = "name") String species) {
+        return service.getAnimalsBySpecies(species);
+    }
+
+    /**
      * Get a specific Animal by Id.
      * http://localhost:8080/animals/2
      *
      * @param animalId the unique Id for a Animal.
      * @return One Animal object.
      */
-    @GetMapping("/{animalId}")
-    public Animal getOneAnimal(@PathVariable int animalId) {
+    @GetMapping("/{animalId}") // Change the path here to avoid ambiguity
+    public Animal getOneAnimal(@PathVariable Integer animalId) {
         return service.getAnimalById(animalId);
     }
 
-    /**
-     * Get a list of Students based on their major.
-     * http://localhost:8080/animals?string={name}
-     *
-     * @param name the search key.
-     * @return A list of Student objects matching the search key.
-     */
 
-    @GetMapping("/find")
-    public List<Animal> getAnimalsByString(@RequestParam(name = "string", defaultValue = "keet") String name) {
-        return service.getAnimalsByString(String name);
-    }
     /**
      * Create a new Animal entry.
      * http://localhost:8080/animals/new
@@ -75,7 +83,7 @@ public class AnimalController {
      * @return the updated Animal object.
      */
     @PutMapping("/update/{animalId}")
-    public Animal updateAnimal(@PathVariable int animalId, @RequestBody Animal animal) {
+    public Animal updateAnimal(@PathVariable Integer animalId, @RequestBody Animal animal) {
         service.updateAnimal(animalId, animal);
         return service.getAnimalById(animalId);
     }
@@ -88,7 +96,7 @@ public class AnimalController {
      * @return the updated list of Animals.
      */
     @DeleteMapping("/delete/{animalId}")
-    public List<Animal> deleteAnimalById(@PathVariable int animalId) {
+    public List<Animal> deleteAnimalById(@PathVariable Integer animalId) {
         service.deleteAnimalById(animalId);
         return service.getAllAnimals();
     }

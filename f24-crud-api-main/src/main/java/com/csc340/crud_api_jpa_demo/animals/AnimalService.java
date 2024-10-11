@@ -31,7 +31,7 @@ public class AnimalService {
      * @param animalId the unique Animal id.
      * @return a unique Animal object.
      */
-    public Animal getAnimalById(int animalId) {
+    public Animal getAnimalById(Integer animalId) {
         return animalRepository.findById(animalId).orElse(null);
     }
 
@@ -49,11 +49,11 @@ public class AnimalService {
     /**
      * Fetch all animals with a string in their name.
      *
-     * @param name
+     * @param string
      * @return the list of matching Animals
      */
-    public List<Animal> getAnimalsByString(String name) {
-        return animalRepository.getAnimalsByString(String name);
+    public List<Animal> getAnimalsByString(String string) {
+        return animalRepository.findByNameContaining("%" + string + "%");
     }
 
     /**
@@ -71,7 +71,7 @@ public class AnimalService {
      * @param animalId the unique Animal Id.
      * @param animal   the new Animal details.
      */
-    public void updateAnimal(int animalId, Animal animal) {
+    public void updateAnimal(Integer animalId, Animal animal) {
         Animal existing = getAnimalById(animalId);
         existing.setName(animal.getName());
         existing.setScientificName(animal.getScientificName());
@@ -88,7 +88,7 @@ public class AnimalService {
      *
      * @param animalId the unique Animal Id.
      */
-    public void deleteAnimalById(int animalId) {
+    public void deleteAnimalById(Integer animalId) {
         animalRepository.deleteById(animalId);
     }
 }
