@@ -36,14 +36,14 @@ public class AnimalController {
      * @return A list of Student objects matching the search key.
      */
 
-    @GetMapping("/find")
+    @GetMapping("")
     public List<Animal> getAnimalsByString(@RequestParam(name = "string") String string) {
         return service.getAnimalsByString(string);
     }
 
 
-    @GetMapping("/species")
-    public List<Animal> getAnimalsBySpecies(@RequestParam(name = "name") String species) {
+    @GetMapping("")
+    public List<Animal> getAnimalsBySpecies(@RequestParam(name = "species") String species) {
         return service.getAnimalsBySpecies(species);
     }
 
